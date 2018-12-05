@@ -14,7 +14,7 @@ def find_user(name)
   # if user name is not found
   if search_name.nil?
   # Please create your account.
-    puts "Please create an account."
+    puts "No account found. Please create an account."
   # enter your birthday.
     puts "Please enter your birthday (yyyy-mm-dd)"
     birthday = gets.chomp # <-- this should call the birthday method.
@@ -33,15 +33,9 @@ def account_found(name)
 end
 
 def start_app
-  puts "Please enter one of these keywords:\n cat\n fail\n star wars\n sleeping\n falling\n cute\n hugging\n traveling\n cold\n dj"
+  puts "Please enter one of these keywords:\n cat\n fail\n star wars\n sleepy\n falling\n cute\n hugging\n traveling\n cold\n dj"
   keyword = gets.chomp #can save this as a variable.
-  #if keyword matches the .
-  # if get_title_url_from_api.has_key?(keyword)
-  # #create a gif instance.
-  #   get_title_url_from_api.find do |title, url|
-  #     new_gif = Gif.create(title: title, url: url)
-  #   end
-  # end
+
   url_array = []
   all_gif = get_title_url_from_api.select do |title, url|
     url_array << url if title.include?(keyword)
@@ -50,12 +44,7 @@ def start_app
   new_gif = Gif.create(title: keyword, url: url)
   # binding.pry
   puts new_gif.url
-  # puts new_gif.url
 end
-
-# def find_keywords
-#
-# end
 
 def save_as_favorite
   puts "Do you want to save this gif as a favorite? Y/N"
