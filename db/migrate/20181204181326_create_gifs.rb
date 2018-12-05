@@ -3,7 +3,6 @@ class CreateGifs < ActiveRecord::Migration[5.0]
     create_table :gifs do |t|
       t.string :title
       t.string :url
-      t.integer :num_of_favorites
     end
   end
 
