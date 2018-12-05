@@ -14,7 +14,7 @@ def find_user(name)
   # if user name is not found
   if search_name.nil?
   # Please create your account.
-    puts "Please create an account."
+    puts "Hmm... we could not find your account, please create an account."
   # enter your birthday.
     puts "Please enter your birthday (yyyy-mm-dd)"
     birthday = gets.chomp # <-- this should call the birthday method.
