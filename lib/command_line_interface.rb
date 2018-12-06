@@ -23,9 +23,19 @@ end
 
 def list_of_keywords
   #make an array
-  list = ["cat", "fail", "star wars", "falling", "cute", "hugging", "traveling", "cold", "dj"]
-  list.map { |keyword| p keyword }
+  # list = ["cat", "fail", "star wars", "falling", "cute", "hugging", "traveling", "cold", "dj"]
+  keywords_updated
+  binding.pry
 end
+# binding.pry
+
+def puts_keywords
+  puts keywords_updated.sample(15)
+end
+
+# def print_key_word_list
+#   list_of_keywords.map { |keyword| p keyword }
+# end
 
 def find_keyword_in_titles(keyword)
   url_array = []

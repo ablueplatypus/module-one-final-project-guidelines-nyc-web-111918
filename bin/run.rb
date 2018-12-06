@@ -16,15 +16,12 @@ current_user = User.find_by(name: name, birthday: birthday)
 #------RUNNING APP SECTION ----
 leave = nil #this is False because nil is false
 until leave == true
-#We want this process to repeat.
 #until the user asks to logout keep asking if they want to search
-
 right_keyword = nil
 until right_keyword == true
   show_keywords
-  list_of_keywords
+  puts_keywords
   keyword = user_input
-  # binding.pry
   if list_of_keywords.include?(keyword) == false
     system("clear")
     puts "Ummm... That is not a keyword, please enter a valid keyword."
@@ -32,7 +29,7 @@ until right_keyword == true
     find_keyword_in_titles(keyword)
     url = return_random_gif_url(keyword)
     new_gif = create_new_gif(keyword, url)
-    puts url
+    p url
     puts "Are you ready to see a TRILL GIF?!?!!"
     sleep(3)
     system('open', url)
