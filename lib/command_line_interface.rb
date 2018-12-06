@@ -1,8 +1,8 @@
 # interface for users to display what our app does
 
 def welcome
-  puts "Meow!! This is our super fun gif search app."
-  puts "You need an account to log in."
+  puts "🐱 < Meow!! This is our super fun gif search app."
+  puts "     You need an account to log in."
 end
 
 def find_or_create_user(name, birthday) # name = login_name
@@ -17,15 +17,15 @@ def user_input_upcase
   gets.chomp.upcase.strip
 end
 
-def show_keywords
-  puts "Please enter one of these keywords:"
-end
+# def show_keywords
+#   puts "Please enter one of these keywords:"
+# end
+
 
 def list_of_keywords
-  #make an array
-  # list = ["cat", "fail", "star wars", "falling", "cute", "hugging", "traveling", "cold", "dj"]
+  #key word list from api.
   keywords_updated
-  binding.pry
+  #binding.pry
 end
 # binding.pry
 
@@ -60,4 +60,13 @@ end
 
 def create_favorite(current_user, new_gif)
   Favorite.create(user_id: current_user.id, gif_id: new_gif.id)
+end
+
+def countdown_with_sleep(count)
+  while count > 0
+    count-=1
+    sleep(1)
+    puts "🐱  #{count+1}"
+  end
+  puts "HAPPY NEW YEAR!"
 end
