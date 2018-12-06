@@ -21,12 +21,14 @@ def show_keywords
   puts "Please enter one of these keywords:"
 end
 
-def list_of_keywords
-  #make an array
+def string_keywords # returns nil
+  puts ["cat", "fail", "star wars", "falling", "cute", "hugging", "traveling", "cold", "dj"]
+end
+
+def keywords_returns_true # returns true
   list = ["cat", "fail", "star wars", "falling", "cute", "hugging", "traveling", "cold", "dj"]
   list.map { |keyword| p keyword }
 end
-
 
 def find_keyword_in_titles(keyword)
   url_array = []

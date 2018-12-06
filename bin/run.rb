@@ -13,7 +13,8 @@ else
   puts "Your account has been created! Your username is Trill#{name}."
 end
 current_user = User.find_by(name: name, birthday: birthday)
-#------RUNNING APP SECTION ----
+
+#------RUNNING APP SECTION -----------------#
 leave = nil #this is False because nil is false
 until leave == true
 #We want this process to repeat.
@@ -22,19 +23,19 @@ until leave == true
 right_keyword = nil
 until right_keyword == true
   show_keywords
-  list_of_keywords
+  string_keywords # string array returns nil
   keyword = user_input
-  # binding.pry
-  if list_of_keywords.include?(keyword) == false
+  if keywords_returns_true.include?(keyword) == false # we want string array to return true
     system("clear")
     puts "Ummm... That is not a keyword, please enter a valid keyword."
   else
     find_keyword_in_titles(keyword)
     url = return_random_gif_url(keyword)
     new_gif = create_new_gif(keyword, url)
-    puts url
+    p url
     puts "Are you ready to see a TRILL GIF?!?!!"
     sleep(3)
+    # binding.pry
     system('open', url)
     right_keyword = true
   end
