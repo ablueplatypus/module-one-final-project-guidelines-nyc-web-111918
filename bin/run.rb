@@ -1,6 +1,6 @@
 require_relative '../config/environment'
 
-#LOGIN SECTION
+#---------------LOGIN SECTION---------------
 system("clear")
 welcome
 puts "     Please enter your name."
@@ -11,14 +11,14 @@ birthday = user_input
 # checks if user exists
 if find_or_create_user(name, birthday) == User.find_by(name: name, birthday: birthday)
   system("clear")
-  puts "😸 < Welcome Trill#{name}!"
+  puts "😸 < Welcome back Trill#{name}!"
 else
   puts "Your account has been created! We chose a username for you! Your username is Trill#{name}."
 end
 
 current_user = User.find_by(name: name, birthday: birthday)
 
-#------RUNNING APP SECTION -----------------#
+#-------------RUNNING APP SECTION -----------------#
 leave = nil #this is False because nil is false
 until leave == true
 #until the user asks to logout keep asking if they want to search
@@ -30,6 +30,7 @@ until ask_fav == true
   puts "🐱 < Please choose one of the options."
   homepage_options
   options_input = user_input
+  current_user = User.find_by(name: name, birthday: birthday)
   if options_input == "1"
     if get_users_favorites_url(current_user).empty?
       puts "Sorry. You have no saved favorites."
@@ -50,7 +51,7 @@ end # end of homepage_options until
   system("clear")
   if list_of_keywords.include?(keyword) == false
     system("clear")
-    puts "     Ummm... That is not a keyword, please enter a valid keyword."
+    puts "Ummm... That is not a keyword, please enter a valid keyword."
   else
     find_keyword_in_titles(keyword)
     url = return_random_gif_url(keyword)
@@ -74,6 +75,7 @@ yes_no = user_input_upcase
     puts "O.K. This gif was not saved."
   else yes_no == "Y"
     create_favorite(current_user, new_gif)
+    # binding.pry
     system("clear")
     puts "You have saved this gif to your favorites!"
   end
@@ -84,10 +86,13 @@ yes_no = user_input_upcase
     puts get_users_favorites_url(current_user)
   end
 
+  #--------------LOGOUT SECTION---------------------
+
   # puts "pretty spaces +++++++++++++++++++++++++++++++++="
-  puts "Do you want any more cats? If 'N' you will logout. Y/N"
-  answer = user_input_upcase
-  if answer == "N"
+  options_puts
+  logout_options
+  answer = user_input
+  if answer == "2" || answer.downcase == "logout" || answer.downcase == "exit"
     leave = true
   end
 end # end of until leave
@@ -95,6 +100,5 @@ end # end of until leave
 # puts "Do you want logout? Y/N"
 #if they say Y, the app exits.
 #if they say N, the app ask them to search a keyword.
-
 system("clear")
-puts "You have logged out! BYE BYE!"
+puts "You have logged out! MEOW, MEOW!"
