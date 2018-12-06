@@ -17,9 +17,9 @@ def user_input_upcase
   gets.chomp.upcase.strip
 end
 
-def show_keywords
-  puts "Please enter one of these keywords:"
-end
+# def show_keywords
+#   puts "Please enter one of these keywords:"
+# end
 
 def string_keywords # returns nil
   puts ["cat", "fail", "star wars", "falling", "cute", "hugging", "traveling", "cold", "dj"]
