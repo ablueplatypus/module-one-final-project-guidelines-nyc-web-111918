@@ -20,16 +20,15 @@ current_user = User.find_by(name: name, birthday: birthday)
 #------RUNNING APP SECTION -----------------#
 leave = nil #this is False because nil is false
 until leave == true
-#We want this process to repeat.
 #until the user asks to logout keep asking if they want to search
-
 right_keyword = nil
 until right_keyword == true
-  puts "     Please enter one of these keywords:"
-  string_keywords # string array returns nil
+  
+  show_keywords
+  puts_keywords
   keyword = user_input
-  system("clear")
-  if keywords_returns_true.include?(keyword) == false # we want string array to return true
+  if list_of_keywords.include?(keyword) == false
+
     system("clear")
     puts "     Ummm... That is not a keyword, please enter a valid keyword."
   else
