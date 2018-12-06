@@ -1,60 +1,53 @@
 # interface for users to display what our app does
 
 def welcome
-  puts "Meow!! Enjoy kittys here!"
+  puts "Meow!! This is our super fun gif search app."
+  puts "You need an account to log in."
 end
 
-def login_name
-  puts "Please enter your name."
-  name = gets.chomp
+def find_or_create_user(name, birthday) # name = login_name
+  User.find_or_create_by(name: name, username: "Trill#{name}", birthday: birthday)
 end
 
-def find_user(name)
-  search_name = User.find_by(name: name)
-  # if user name is not found
-  if search_name.nil?
-  # Please create your account.
-    puts "No account found. Please create an account."
-  # enter your birthday.
-    puts "Please enter your birthday (yyyy-mm-dd)"
-    birthday = gets.chomp # <-- this should call the birthday method.
-    User.create(name: name, username: "Trill#{name}", birthday: "#{birthday}")
-    puts "Welcome, your username is Trill#{name}." #<-- this will create a new user.
-    start_app
-  else
-    # if we can not find the user name in the database
-      account_found(name)
-  end
+def user_input
+  gets.chomp.strip
 end
 
-def account_found(name)
-  puts "Welcome Trill#{name}."
-  start_app
+def user_input_upcase
+  gets.chomp.upcase.strip
 end
 
-def start_app
-  puts "Please enter one of these keywords:\n cat\n fail\n star wars\n sleepy\n falling\n cute\n hugging\n traveling\n cold\n dj"
-  keyword = gets.chomp #can save this as a variable.
+def show_keywords
+  puts "Please enter one of these keywords:"
+end
 
+def list_of_keywords
+  #make an array
+  list = ["cat", "fail", "star wars", "falling", "cute", "hugging", "traveling", "cold", "dj"]
+  list.map { |keyword| p keyword }
+end
+
+def find_keyword_in_titles(keyword)
   url_array = []
-  all_gif = get_title_url_from_api.select do |title, url|
+  get_title_url_from_api.select do |title, url|
     url_array << url if title.include?(keyword)
   end
-  url = url_array.sample
-  new_gif = Gif.create(title: keyword, url: url)
+  url_array
   # binding.pry
-  puts new_gif.url
 end
 
-def save_as_favorite
-  puts "Do you want to save this gif as a favorite? Y/N"
-
+def return_random_gif_url(keyword)
+  find_keyword_in_titles(keyword).sample
 end
 
-def view_all_favorites
-
+def create_new_gif(keyword, url)
+  Gif.create(title: keyword, url: url)
 end
 
-def logout
+def get_current_user(name, birthday)
+  User.find_by(name: name, birthday: birthday)
+end
 
+def create_favorite(current_user, new_gif)
+  Favorite.create(user_id: current_user.id, gif_id: new_gif.id)
 end

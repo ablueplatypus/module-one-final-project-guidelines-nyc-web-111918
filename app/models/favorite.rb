@@ -4,4 +4,6 @@ class Favorite < ActiveRecord::Base
   belongs_to :user
   belongs_to :gif
 
+
+
 end # end of Favorite class

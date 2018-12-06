@@ -1,4 +1,5 @@
 require 'bundler'
+# require 'faker'
 Bundler.require
 
 ActiveRecord::Base.logger = nil
