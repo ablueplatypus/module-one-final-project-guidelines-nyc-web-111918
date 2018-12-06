@@ -27,6 +27,7 @@ def list_of_keywords
   list.map { |keyword| p keyword }
 end
 
+
 def find_keyword_in_titles(keyword)
   url_array = []
   get_title_url_from_api.select do |title, url|
