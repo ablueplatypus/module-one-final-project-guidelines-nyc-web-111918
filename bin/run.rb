@@ -13,8 +13,9 @@ if find_or_create_user(name, birthday) == User.find_by(name: name, birthday: bir
   system("clear")
   puts "😸 < Welcome Trill#{name}!"
 else
-  puts "Your account has been created! Your username is Trill#{name}."
+  puts "Your account has been created! We chose a username for you! Your username is Trill#{name}."
 end
+
 current_user = User.find_by(name: name, birthday: birthday)
 
 #------RUNNING APP SECTION -----------------#
@@ -23,12 +24,12 @@ until leave == true
 #until the user asks to logout keep asking if they want to search
 right_keyword = nil
 until right_keyword == true
-  
+
   show_keywords
   puts_keywords
   keyword = user_input
+  system("clear")
   if list_of_keywords.include?(keyword) == false
-
     system("clear")
     puts "     Ummm... That is not a keyword, please enter a valid keyword."
   else
@@ -39,7 +40,6 @@ until right_keyword == true
     p url
     puts "Are you ready to see a TRILL GIF?!?!!"
     countdown_with_sleep(3)
-    # binding.pry
     system('open', url)
     right_keyword = true
   end
@@ -58,7 +58,15 @@ yes_no = user_input_upcase
     system("clear")
     puts "You have saved this gif to your favorites!"
   end
-  puts "Do you want any more cats? Y/N"
+  # Do you want to see your favorites????
+  system("clear")
+  puts "Do you want to see all of your saved favorites? Y/N"
+  if user_input_upcase == "Y"
+    puts get_users_favorites_url(current_user)
+  end
+  system("clear")
+  # puts "pretty spaces +++++++++++++++++++++++++++++++++="
+  puts "Do you want any more cats? If 'N' you will logout. Y/N"
   answer = user_input_upcase
   if answer == "N"
     leave = true
@@ -68,8 +76,6 @@ end # end of until leave
 # puts "Do you want logout? Y/N"
 #if they say Y, the app exits.
 #if they say N, the app ask them to search a keyword.
-
-
 
 system("clear")
 puts "You have logged out! BYE BYE!"

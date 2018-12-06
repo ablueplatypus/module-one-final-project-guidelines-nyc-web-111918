@@ -45,6 +45,20 @@
     title_url
   end
 
+  def downcase_title_url_keys
+    downcase_title_url_hash = {}
+    get_title_url_from_api.map do |title, url|
+      downcase_title_url_hash[title.split(" ").map {|word| word.downcase}.join(" ")] = url
+    end
+    downcase_title_url_hash
+  end
+
+  def new_gif_titles
+    downcase_title_url_keys.map do |title, url|
+      title
+    end
+  end
+
 # Iterate through the title url hash
 # grab all the titles
 # make strings in to a (title) array

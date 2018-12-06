@@ -2,6 +2,7 @@
 
 def welcome
   puts "🐱 < Meow!! This is our super fun gif search app."
+  puts "     GIF A CAT"
   puts "     You need an account to log in."
 end
 
@@ -33,17 +34,14 @@ def puts_keywords
   puts keywords_updated.sample(15)
 end
 
-# def print_key_word_list
-#   list_of_keywords.map { |keyword| p keyword }
-# end
+#for debugging print respone to the api.
 
 def find_keyword_in_titles(keyword)
   url_array = []
-  get_title_url_from_api.select do |title, url|
+  downcase_title_url_keys.select do |title, url|
     url_array << url if title.include?(keyword)
   end
   url_array
-  # binding.pry
 end
 
 def return_random_gif_url(keyword)
@@ -51,6 +49,9 @@ def return_random_gif_url(keyword)
 end
 
 def create_new_gif(keyword, url)
+  #loop over our Hash
+  #the hash keyword will equal the keyword
+  #the url will equal the url
   Gif.create(title: keyword, url: url)
 end
 
@@ -62,11 +63,15 @@ def create_favorite(current_user, new_gif)
   Favorite.create(user_id: current_user.id, gif_id: new_gif.id)
 end
 
+def get_users_favorites_url(current_user)
+  current_user.gifs.map { |gif| "Title: #{gif.title}, URL: #{gif.url}" }
+end
+
 def countdown_with_sleep(count)
   while count > 0
     count-=1
     sleep(1)
     puts "🐱  #{count+1}"
   end
-  puts "HAPPY NEW YEAR!"
+  puts "MEOW!"
 end
