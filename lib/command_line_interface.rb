@@ -22,6 +22,10 @@ def show_keywords
   puts "Please enter one of these keywords:"
 end
 
+def homepage_options
+  puts "1. View all of your favorite cat gifs"
+  puts "2. Search for a new cat gif"
+end
 
 def list_of_keywords
   #key word list from api.
@@ -65,6 +69,10 @@ end
 
 def get_users_favorites_url(current_user)
   current_user.gifs.map { |gif| "Title: #{gif.title}, URL: #{gif.url}" }
+end
+
+def user_has_no_favorites_url(current_user)
+  get_users_favorites_url(current_user) == nil
 end
 
 def countdown_with_sleep(count)

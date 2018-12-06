@@ -25,6 +25,25 @@ until leave == true
 right_keyword = nil
 until right_keyword == true
 
+ask_fav = nil
+until ask_fav == true
+  puts "🐱 < Please choose one of the options."
+  homepage_options
+  options_input = user_input
+  if options_input == "1"
+    if get_users_favorites_url(current_user).empty?
+      puts "Sorry. You have no saved favorites."
+    else
+      puts get_users_favorites_url(current_user)
+    end
+  else
+  end
+  if options_input == "2"
+    ask_fav = true
+  end
+end # end of homepage_options until
+
+  system("clear")
   show_keywords
   puts_keywords
   keyword = user_input
@@ -64,7 +83,7 @@ yes_no = user_input_upcase
   if user_input_upcase == "Y"
     puts get_users_favorites_url(current_user)
   end
-  system("clear")
+
   # puts "pretty spaces +++++++++++++++++++++++++++++++++="
   puts "Do you want any more cats? If 'N' you will logout. Y/N"
   answer = user_input_upcase
