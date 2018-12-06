@@ -10,7 +10,7 @@ puts "Please enter your birthday to log in (yyyy-mm-dd)."
 birthday = user_input
 # checks if user exists
 if find_or_create_user(name, birthday) == User.find_by(name: name, birthday: birthday)
-  # system("clear")
+  system("clear")
   puts "Welcome back Trill#{name}!"
 else
   puts "Your account has been created! Your username is Trill#{name}."
