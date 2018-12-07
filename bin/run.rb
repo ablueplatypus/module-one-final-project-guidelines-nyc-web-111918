@@ -35,19 +35,21 @@ puts "  🐱 < Please enter your birthday to log in (yyyy-mm-dd).>".colorize(:li
 puts "      --------------------------------------------------".colorize(:light_yellow)
 birthday = user_input
 # checks if user exists
-if find_or_create_user(name, birthday) == User.find_by(name: name, birthday: birthday)
+if find_by(name, birthday)
   system("clear")
   sleep(0.5)
   puts "                                         "
   puts logo
   puts "                                         "
   puts "      _____________________".light_yellow.bold
-  puts "  😸 < Welcome Trill#{name}!>".light_yellow.bold
+  puts "  😸 < Welcome back Trill#{name}!>".light_yellow.bold
   puts "      ---------------------".light_yellow.bold
   puts "                                         "
   system("say", "Hi Trill#{name}!")
 else
+  create_user(name, birthday)
   puts "Your account has been created! We chose a username for you! Your username is Trill#{name}.".colorize(:light_yellow)
+  system("say", "Hi Trill#{name}!")
 end
 
 current_user = User.find_by(name: name, birthday: birthday)

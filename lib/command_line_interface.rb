@@ -14,8 +14,12 @@ def welcome
   puts "       You need an account to log in.".colorize(:light_red)
 end
 
-def find_or_create_user(name, birthday) # name = login_name
-  User.find_or_create_by(name: name, username: "Trill#{name}", birthday: birthday)
+def find_by(name, birthday) # name = login_name
+  User.find_by(name: name, username: "Trill#{name}", birthday: birthday)
+end
+
+def create_user(name, birthday)
+  User.create(name: name, username: "Trill#{name}", birthday: birthday)
 end
 
 def user_input
