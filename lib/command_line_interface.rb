@@ -1,9 +1,10 @@
 # interface for users to display what our app does
+require "colorize"
 
 def welcome
-  puts "🐱 < Meow!! This is our super fun gif search app."
-  puts "     GIF A CAT"
-  puts "     You need an account to log in."
+  puts "🐱 < Meow!! This is our super fun gif search app.".colorize(:magenta)
+  puts "     GIF A CAT".colorize(:magenta)
+  puts "     You need an account to log in.".colorize(:magenta)
 end
 
 def find_or_create_user(name, birthday) # name = login_name
@@ -19,12 +20,12 @@ def user_input_upcase
 end
 
 def show_keywords
-  puts "Please enter one of these keywords:"
+  puts "Please enter one of these keywords:".colorize(:cyan)
 end
 
 def homepage_options
-  puts "1. View all of your favorite cat gifs"
-  puts "2. Search for a new cat gif"
+  puts "1. View all of your favorite cat gifs".colorize(:cyan)
+  puts "2. Search for a new cat gif".colorize(:cyan)
 end
 
 def list_of_keywords
@@ -68,7 +69,7 @@ def create_favorite(current_user, new_gif)
 end
 
 def get_users_favorites_url(current_user)
-  current_user.gifs.map { |gif| "Title: #{gif.title}, URL: #{gif.url}" }
+  current_user.gifs.map { |gif| "Title: #{gif.title}, URL: #{gif.url}".colorize(:magenta) }
 end
 
 def user_has_no_favorites_url(current_user)
@@ -79,7 +80,7 @@ def countdown_with_sleep(count)
   while count > 0
     count-=1
     sleep(1)
-    puts "🐱  #{count+1}"
+    puts "🐱  #{count+1}".colorize(:magenta)
   end
-  puts "MEOW!"
+  puts "MEOW!".colorize(:magenta)
 end
