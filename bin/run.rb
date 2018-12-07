@@ -41,9 +41,9 @@ if find_or_create_user(name, birthday) == User.find_by(name: name, birthday: bir
   puts "                                         "
   puts logo
   puts "                                         "
-  puts "      _____________________".colorize(:light_yellow)
-  puts "  😸 < Welcome Trill#{name}!>".colorize(:light_yellow)
-  puts "      ---------------------".colorize(:light_yellow)
+  puts "      _____________________".light_yellow.bold
+  puts "  😸 < Welcome Trill#{name}!>".light_yellow.bold
+  puts "      ---------------------".light_yellow.bold
   puts "                                         "
   system("say", "Hi Trill#{name}!")
 else
@@ -160,4 +160,4 @@ puts logo
 puts "                                         "
 puts "   👋🐱 < See you later! MEOW, MEOW!".colorize(:light_yellow)
 puts "                                         "
-system("say", "See you later! MEEE OW!")
+system("say", "I am a cat! Meee ow!")
