@@ -19,8 +19,8 @@ need_a_name = true
 while need_a_name == true
   name = user_input_downcase
   if name.length < 2
-    puts "Oops... Please try again!".colorize(:red)
-    puts "Your name must be longer than 2 characters.".colorize(:red)
+    puts "Oops... Please try again!".colorize(:green)
+    puts "Your name must be longer than 2 characters.".colorize(:green)
     system("say", "oops")
   elsif name.length > 2
   need_a_name = false

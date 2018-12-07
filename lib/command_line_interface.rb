@@ -47,7 +47,7 @@ def homepage_options
 end
 
 def logout_options
-  puts "       1. Do you want more cats?".colorize(:light_red)
+  puts "       1. Do you want more cats?".colorize(:light_blue)
   puts "       2. Logout".green.blink
 end
 
