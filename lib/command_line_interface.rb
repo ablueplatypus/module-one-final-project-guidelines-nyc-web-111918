@@ -8,7 +8,7 @@ end
 
 def welcome
   puts "      ______________________________________________".colorize(:light_red)
-  puts "  🐱 < Meow!! This is our super fun gif search app. >".colorize(:light_yellow)
+  puts "  🐱 < Meow!! This is our super fun gif search app. >".light_blue.bold
   puts "      ----------------------------------------------".colorize(:light_red)
   sleep(1)
   puts "       You need an account to log in.".colorize(:light_red)
