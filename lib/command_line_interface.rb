@@ -3,13 +3,15 @@ require "colorize"
 
 def logo
 a = Artii::Base.new :font => 'rowancap'
-a.asciify('    GIF A CAT').colorize(:magenta)
+a.asciify('    GIF A CAT').colorize(:light_red)
 end
 
 def welcome
-  puts "  🐱 < Meow!! This is our super fun gif search app.".colorize(:magenta)
+  puts "      ______________________________________________".colorize(:light_red)
+  puts "  🐱 < Meow!! This is our super fun gif search app. >".colorize(:light_yellow)
+  puts "      ----------------------------------------------".colorize(:light_red)
   sleep(1)
-  puts "       You need an account to log in.".colorize(:magenta)
+  puts "       You need an account to log in.".colorize(:light_red)
 end
 
 def find_or_create_user(name, birthday) # name = login_name
@@ -29,23 +31,24 @@ def user_input_upcase
 end
 
 def options_puts
- puts " 🐱 < Please choose one of the options."
+ puts "      _________________________________".colorize(:light_yellow)
+ puts "  🐱 < Please choose one of the options.>".colorize(:light_yellow)
+ puts "      ---------------------------------".colorize(:light_yellow)
 end
 
 def show_keywords
-  puts "       Please enter one of these keywords:".colorize(:cyan)
+  puts "🐱 < Please enter one of these keywords:".colorize(:light_yellow)
 end
 
 def homepage_options
-  sleep(1)
-  puts "       1. View all of your favorite cat gifs".colorize(:cyan)
-  sleep(1)
-  puts "       2. Search for a new cat gif".colorize(:cyan)
+  sleep(0.5)
+  puts "       1. View all of your favorite cat gifs".colorize(:light_blue)
+  puts "       2. Search for a new cat gif".colorize(:light_blue)
 end
 
 def logout_options
-  puts "       1. Do you want more cats?"
-  puts "       2. Logout"
+  puts "       1. Do you want more cats?".colorize(:light_red)
+  puts "       2. Logout".green.blink
 end
 
 def list_of_keywords
@@ -89,7 +92,7 @@ def create_favorite(current_user, new_gif)
 end
 
 def get_users_favorites_url(current_user)
-  current_user.gifs.map { |gif| "Title: #{gif.title} ~~~~~~~~ URL: #{gif.url}".colorize(:magenta) }
+  current_user.gifs.map { |gif| "Title: #{gif.title} ~~~~~~~~ URL: #{gif.url}".colorize(:light_red) }
 end
 
 def user_has_no_favorites_url(current_user)
@@ -100,7 +103,7 @@ def countdown_with_sleep(count)
   while count > 0
     count-=1
     sleep(1)
-    puts "🐱  #{count+1}".colorize(:magenta)
+    puts "  🐱 < #{count+1}".colorize(:light_red)
   end
-  puts "MEOW!".colorize(:magenta)
+  puts "       MEOW!".colorize(:light_yellow)
 end
