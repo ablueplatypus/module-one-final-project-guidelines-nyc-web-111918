@@ -96,7 +96,7 @@ end # end of homepage_options until
     url = return_random_gif_url(keyword)
     system("clear")
     puts "  🐱 < You searched for #{keyword}".colorize(:light_red)
-
+    system("say", "I love #{keyword}!")
     new_gif = create_new_gif(keyword, url)
     p url
     sleep(1)
