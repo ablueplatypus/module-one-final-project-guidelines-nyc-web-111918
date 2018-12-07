@@ -15,8 +15,16 @@ def user_input
   gets.chomp.strip
 end
 
+def user_input_downcase
+  gets.chomp.downcase.strip
+end
+
 def user_input_upcase
   gets.chomp.upcase.strip
+end
+
+def options_puts
+ puts "🐱 < Please choose one of the options."
 end
 
 def show_keywords
@@ -26,6 +34,11 @@ end
 def homepage_options
   puts "1. View all of your favorite cat gifs".colorize(:cyan)
   puts "2. Search for a new cat gif".colorize(:cyan)
+end
+
+def logout_options
+  puts "1. Do you want more cats?"
+  puts "2. Logout"
 end
 
 def list_of_keywords
@@ -69,7 +82,7 @@ def create_favorite(current_user, new_gif)
 end
 
 def get_users_favorites_url(current_user)
-  current_user.gifs.map { |gif| "Title: #{gif.title}, URL: #{gif.url}".colorize(:magenta) }
+  current_user.gifs.map { |gif| "Title: #{gif.title} ~~~~~~~~ URL: #{gif.url}".colorize(:magenta) }
 end
 
 def user_has_no_favorites_url(current_user)

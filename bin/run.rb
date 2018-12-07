@@ -2,7 +2,7 @@ require_relative '../config/environment'
 require "artii"
 require "colorize"
 
-#LOGIN SECTION
+#---------------LOGIN SECTION---------------
 system("clear")
 welcome
 puts "     Please enter your name.".colorize(:cyan)
@@ -20,7 +20,7 @@ end
 
 current_user = User.find_by(name: name, birthday: birthday)
 
-#------RUNNING APP SECTION -----------------#
+#-------------RUNNING APP SECTION -----------------#
 leave = nil #this is False because nil is false
 until leave == true
 #until the user asks to logout keep asking if they want to search
@@ -32,6 +32,7 @@ until ask_fav == true
   puts "🐱 < Please type one of the numbers to choose one of the options.".colorize(:cyan)
   homepage_options
   options_input = user_input
+  current_user = User.find_by(name: name, birthday: birthday)
   if options_input == "1"
     if get_users_favorites_url(current_user).empty?
       puts "😿 < Sorry. You have no saved favorites.".colorize(:magenta)
@@ -76,6 +77,7 @@ yes_no = user_input_upcase
     puts "O.K. This gif was not saved.".colorize(:magenta)
   else yes_no == "Y"
     create_favorite(current_user, new_gif)
+    # binding.pry
     system("clear")
     puts "You have saved this gif to your favorites!".colorize(:magenta)
   end
@@ -86,10 +88,13 @@ yes_no = user_input_upcase
     puts get_users_favorites_url(current_user)
   end
 
+  #--------------LOGOUT SECTION---------------------
+
   # puts "pretty spaces +++++++++++++++++++++++++++++++++="
-  puts "Do you want any more cats? If 'N' you will logout. Y/N".colorize(:cyan)
-  answer = user_input_upcase
-  if answer == "N"
+  options_puts
+  logout_options
+  answer = user_input
+  if answer == "2" || answer.downcase == "logout" || answer.downcase == "exit"
     leave = true
   end
 end # end of until leave
@@ -97,6 +102,5 @@ end # end of until leave
 # puts "Do you want logout? Y/N"
 #if they say Y, the app exits.
 #if they say N, the app ask them to search a keyword.
-
 system("clear")
-puts "👋🐱 < You have logged out! BYE BYE!".colorize(:magenta)
+puts "👋🐱 < You have logged out! MEOW, MEOW!".colorize(:magenta)
