@@ -1,10 +1,15 @@
 # interface for users to display what our app does
 require "colorize"
 
+def logo
+a = Artii::Base.new :font => 'rowancap'
+a.asciify('    GIF A CAT').colorize(:magenta)
+end
+
 def welcome
-  puts "🐱 < Meow!! This is our super fun gif search app.".colorize(:magenta)
-  puts "     GIF A CAT".colorize(:magenta)
-  puts "     You need an account to log in.".colorize(:magenta)
+  puts "  🐱 < Meow!! This is our super fun gif search app.".colorize(:magenta)
+  sleep(1)
+  puts "       You need an account to log in.".colorize(:magenta)
 end
 
 def find_or_create_user(name, birthday) # name = login_name
@@ -24,21 +29,23 @@ def user_input_upcase
 end
 
 def options_puts
- puts "🐱 < Please choose one of the options."
+ puts " 🐱 < Please choose one of the options."
 end
 
 def show_keywords
-  puts "Please enter one of these keywords:".colorize(:cyan)
+  puts "       Please enter one of these keywords:".colorize(:cyan)
 end
 
 def homepage_options
-  puts "1. View all of your favorite cat gifs".colorize(:cyan)
-  puts "2. Search for a new cat gif".colorize(:cyan)
+  sleep(1)
+  puts "       1. View all of your favorite cat gifs".colorize(:cyan)
+  sleep(1)
+  puts "       2. Search for a new cat gif".colorize(:cyan)
 end
 
 def logout_options
-  puts "1. Do you want more cats?"
-  puts "2. Logout"
+  puts "       1. Do you want more cats?"
+  puts "       2. Logout"
 end
 
 def list_of_keywords
