@@ -31,9 +31,8 @@
 
   def keywords_updated
     remove_two_letter_words = downcase_keywords.delete_if { |word| word.length < 3}
-    remove_and = remove_two_letter_words.delete_if {|word| word == "and"}
-    remove_the = remove_and.delete_if { |word| word == "the" }
-    remove_the
+    remove_and_the = remove_two_letter_words.delete_if {|word| word == "and" || word == "the"}
+    remove_and_the
     # binding.pry
   end
 

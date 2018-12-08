@@ -13,7 +13,7 @@ system("say", "Welcome to Gif A Cat")
 # sleep(1)
 puts "Please enter your name.".light_blue.blink
 system("say", "Please enter your name.")
-#------NAME INPUT EDGE CASE---------------
+#----------NAME INPUT EDGE CASE---------------
 # name = user_input_downcase
 need_a_name = true
 while need_a_name == true
@@ -26,6 +26,7 @@ while need_a_name == true
   need_a_name = false
   end
 end # end of while loop
+#----------------------------------------------
 
 system("clear")
 sleep(0.5)
@@ -61,8 +62,8 @@ until leave == true
 right_keyword = nil
 until right_keyword == true
 
-ask_fav = nil
-until ask_fav == true
+homepage_loop = nil
+until homepage_loop == true
   sleep(1)
   puts "                                         "
   puts "      ____________________________________________________________".colorize(:light_yellow)
@@ -78,10 +79,24 @@ until ask_fav == true
     else
       puts get_users_favorites_url(current_user)
     end
+  elsif options_input == "3"
+    system("clear")
+    puts "Are your sure you want to delete ALL of your favorite gifs?!! Y/N".colorize(:light_red)
+    delete_favorites = user_input_upcase
+    if delete_favorites == "Y" && get_users_favorites_url(current_user).empty? == false
+      destroy_all_favorites(current_user)
+      system("say", "Boom")
+      puts "All of Your favorites have been deleted!!".colorize(:red)
+    elsif delete_favorites == "N" && get_users_favorites_url(current_user).empty? == false
+      puts "Wahoo that was a close one. Your favorites are still saved.".colorize(:light_yellow)
+    else
+      get_users_favorites_url(current_user).empty?
+      puts "Pheww.. you have no saved favorties.".colorize(:light_yellow)
+    end
   else
   end
   if options_input == "2"
-    ask_fav = true
+    homepage_loop = true
   end
 end # end of homepage_options until
 
@@ -114,7 +129,7 @@ end # end of until wrong_keyword
 
 system("clear")
 # save favorites
-save_this_gif = puts "  🐱 < Do you want to save this gif as a favorite? Y/N".colorize(:light_yellow)
+save_this_gif = puts "  🐱 < Do you want to SAVE this gif as a favorite? Y/N".colorize(:light_yellow)
 yes_no = user_input_upcase
 # answer = user_input
   if yes_no == "N"
@@ -130,26 +145,20 @@ yes_no = user_input_upcase
   puts "      _____________________________________________________".colorize(:light_yellow)
   puts "  🐱 < Do you want to see all of your saved favorites? Y/N >".colorize(:light_yellow)
   puts "      -----------------------------------------------------".colorize(:light_yellow)
-  if user_input_upcase == "Y"
+  if user_input_upcase == "Y" && get_users_favorites_url(current_user).empty? == false
     puts get_users_favorites_url(current_user)
+  elsif get_users_favorites_url(current_user).empty?
+    puts "Ooo No you have no saved favorites".colorize(:light_yellow)
+  elsif user_input_upcase == ""
+    system("say", "Blank strings don't upset me.")
+  else
   end
 
-  # puts "  🐱 < Do you want to see all of your saved favorites? Y/N".colorize(:light_yellow)
-  # yes_no_2 = user_input_upcase
-  #   if yes_no_2 == "Y"
-  #     current_user = User.find_by(name: name, birthday: birthday)
-  #     get_users_favorites_url(current_user).empty?
-  #     puts "  😿 < Sorry. You have no saved favorites.".colorize(:light_yellow)
-  #   else
-  #   end
-
   #--------------LOGOUT SECTION---------------------
-
-  # puts "pretty spaces +++++++++++++++++++++++++++++++++="
   options_puts
   logout_options
   answer = user_input
-  if answer == "2" || answer.downcase == "logout" || answer.downcase == "exit"
+  if answer == "2" || answer.downcase == "logout" || answer.downcase == "exit" || answer.downcase == "n"
     leave = true
   end
 end # end of until leave
