@@ -34,8 +34,20 @@ puts "                                         "
 puts "      __________________________________________________".colorize(:light_yellow)
 puts "  🐱 < Please enter your birthday to log in (yyyy-mm-dd).>".colorize(:light_yellow)
 puts "      --------------------------------------------------".colorize(:light_yellow)
-birthday = user_input
-# checks if user exists
+#----------BIRTHDAY INPUT EDGE CASE---------------
+need_a_birthday = true
+while need_a_birthday == true
+  birthday = user_input
+  unless birthday.include?("-") && birthday.length == 10
+    puts "Oops... Please try again!".colorize(:green)
+    puts "Your birthday must be 10 characters long & include dashes '-'.".colorize(:green)
+    system("say", "oops")
+  else
+  need_a_birthday = false
+  end
+end # end of while loop
+#-------------------------------------------------
+
 if find_by(name, birthday)
   system("clear")
   sleep(0.5)
