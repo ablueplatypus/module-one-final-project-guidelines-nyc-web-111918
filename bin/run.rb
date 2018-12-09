@@ -1,4 +1,5 @@
 require_relative '../config/environment'
+require "table_print"
 require "artii"
 require "colorize"
 
@@ -8,8 +9,8 @@ puts "                                         "
 puts logo
 sleep(1)
 welcome
-puts "                                         "
 system("say", "Welcome to Gif A Cat")
+puts "                                         "
 # sleep(1)
 puts "Please enter your name.".light_blue.blink
 system("say", "Please enter your name.")
@@ -54,15 +55,15 @@ if find_by(name, birthday)
   puts "                                         "
   puts logo
   puts "                                         "
-  puts "      _____________________".light_yellow.bold
+  puts "      ___________________________".light_yellow.bold
   puts "  😸 < Welcome back Trill#{name}!>".light_yellow.bold
-  puts "      ---------------------".light_yellow.bold
+  puts "      ---------------------------".light_yellow.bold
   puts "                                         "
-  system("say", "Hi Trill#{name}!")
+  system("say", "Welcome back Trill#{name}!")
 else
   create_user(name, birthday)
   puts "Your account has been created! We chose a username for you! Your username is Trill#{name}.".colorize(:light_yellow)
-  system("say", "Hi Trill#{name}!")
+  system("say", "Welcome Trill#{name}!")
 end
 
 current_user = User.find_by(name: name, birthday: birthday)
@@ -89,7 +90,7 @@ until homepage_loop == true
     if get_users_favorites_url(current_user).empty?
       puts "😿 < Sorry. You have no saved favorites.".colorize(:light_yellow)
     else
-      puts get_users_favorites_url(current_user)
+      puts get_users_favorites_url_table(current_user)
     end
   elsif options_input == "3"
     system("clear")
@@ -153,18 +154,19 @@ yes_no = user_input_upcase
     system("clear")
     puts "       You have saved this gif to your favorites!".colorize(:light_yellow)
   end
-  # system("clear")
-  puts "      _____________________________________________________".colorize(:light_yellow)
-  puts "  🐱 < Do you want to see all of your saved favorites? Y/N >".colorize(:light_yellow)
-  puts "      -----------------------------------------------------".colorize(:light_yellow)
-  if user_input_upcase == "Y" && get_users_favorites_url(current_user).empty? == false
-    puts get_users_favorites_url(current_user)
-  elsif get_users_favorites_url(current_user).empty?
-    puts "Ooo No you have no saved favorites".colorize(:light_yellow)
-  elsif user_input_upcase == ""
-    system("say", "Blank strings don't upset me.")
-  else
-  end
+
+puts "      _____________________________________________________".colorize(:light_yellow)
+puts "  🐱 < Do you want to see all of your saved favorites? Y/N >".colorize(:light_yellow)
+puts "      -----------------------------------------------------".colorize(:light_yellow)
+yes_no_2 = user_input_upcase
+if yes_no_2 == "Y" && get_users_favorites_url(current_user).empty? == false
+  puts get_users_favorites_url_table(current_user)
+elsif get_users_favorites_url(current_user).empty?
+  puts "Ooo No you have no saved favorites".colorize(:light_yellow)
+elsif yes_no_2 == ""
+  system("say", "Blank strings don't upset me.")
+else
+end
 
   #--------------LOGOUT SECTION---------------------
   options_puts

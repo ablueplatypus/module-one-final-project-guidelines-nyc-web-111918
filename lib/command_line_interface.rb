@@ -3,7 +3,7 @@ require "colorize"
 
 def logo
 a = Artii::Base.new :font => 'rowancap'
-a.asciify('    GIF A CAT').colorize(:light_red)
+a.asciify('   GIF A CAT').colorize(:light_red)
 end
 
 #----------------------SCREEN PRINT MESSAGES-----------------------
@@ -16,9 +16,9 @@ def welcome
 end
 
 def options_puts
-  puts "      _________________________________".colorize(:light_yellow)
+  puts "      __________________________________".colorize(:light_yellow)
   puts "  🐱 < Please choose one of the options.>".colorize(:light_yellow)
-  puts "      ---------------------------------".colorize(:light_yellow)
+  puts "      ----------------------------------".colorize(:light_yellow)
 end
 
 def show_keywords
@@ -106,6 +106,10 @@ end
 
 def get_users_favorites_url(current_user)
   current_user.gifs.map { |gif| "Title: #{gif.title} ~~~~~~~~ URL: #{gif.url}".colorize(:light_red) }
+end
+
+def get_users_favorites_url_table(current_user)
+  tp current_user.gifs, "title", {:"url" => {:width => 150}}
 end
 
 def countdown_with_sleep(count)

@@ -6,6 +6,6 @@ gem "sqlite3"
 gem "pry"
 gem "require_all"
 gem "rest-client"
+gem "table_print"
 gem "artii"
 gem "colorize"
-
